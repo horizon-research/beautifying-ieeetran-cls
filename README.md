@@ -11,4 +11,4 @@ The initial commit has the original IEEEtran.cls, which apparantly is version 1.
 
 A few disclaimers:
 * Use at your discretion.
-* It's created mainly for conferences in computer architecture/systems (e.g., ISCA/MICRO/ISPASS) that sometimes have to use the IEEEtran template. When using the IEEEtran template, these conferences usually choose the compsocconf class option (IEEE Computer Society conferencs, or CPS). So most of the "beautifying" edits are for that class.
+* It's created mainly for conferences in computer architecture/systems (e.g., ISCA/MICRO/HPCA) that sometimes have to use the IEEEtran template. When using the IEEEtran template, these conferences usually choose the compsocconf class option (IEEE Computer Society conferencs, or CPS). So most of the "beautifying" edits are for that class.
