@@ -1627,8 +1627,8 @@
   \fi
 \else% not compsoc
   \def\thesectiondis{\thesection.}                   % I.
-  \def\thesubsectiondis{\Alph{subsection}.}          % B.
-  \def\thesubsubsectiondis{\arabic{subsubsection})}  % 3)
+  \def\thesubsectiondis{\Roman{section}-\Alph{subsection}.} % I-B. %LessUgly
+  \def\thesubsubsectiondis{\Roman{section}-\Alph{subsection}.\arabic{subsubsection}}  % I-B.3) %LessUgly
   \def\theparagraphdis{\alph{paragraph})}            % d)
 \fi
 
@@ -1656,6 +1656,7 @@
 \def\abstractname{Abstract}
 % IEEE specific names
 \def\IEEEkeywordsname{Keywords}
+\def\Artifactname{Artifact}
 \def\IEEEproofname{Proof}
 
 
@@ -3739,9 +3740,20 @@ between column types.}%
 
 \def\IEEEkeywords{\normalfont
     \if@twocolumn
-      \@IEEEabskeysecsize\bfseries\textit{\IEEEkeywordsname}-\relax
+      \@IEEEabskeysecsize\bfseries\textit{\IEEEkeywordsname}---\relax %LessUgly
     \else
       \begin{center}\@IEEEabskeysecsize\textbf{\IEEEkeywordsname}\end{center}\quotation\@IEEEabskeysecsize
+    \fi\@IEEEgobbleleadPARNLSP}
+\def\endIEEEkeywords{\relax\ifCLASSOPTIONtechnote\vspace{1.34ex}\else\vspace{0.67ex}\fi
+    \par\if@twocolumn\else\endquotation\fi%
+    \normalfont\normalsize}
+
+%LessUgly
+\def\Artifact{\normalfont
+    \if@twocolumn
+      \@IEEEabskeysecsize\bfseries\textit{\Artifactname}---\relax
+    \else
+      \begin{center}\@IEEEabskeysecsize\textbf{\Artifactname}\end{center}\quotation\@IEEEabskeysecsize
     \fi\@IEEEgobbleleadPARNLSP}
 \def\endIEEEkeywords{\relax\ifCLASSOPTIONtechnote\vspace{1.34ex}\else\vspace{0.67ex}\fi
     \par\if@twocolumn\else\endquotation\fi%
@@ -3894,9 +3906,9 @@ between column types.}%
 \ifCLASSOPTIONconference%
 % IEEE wants section heading spacing to decrease for conference mode
 \def\section{\@startsection{section}{1}{\z@}{1.5ex plus 1.5ex minus 0.5ex}%
-{0.7ex plus 1ex minus 0ex}{\normalfont\normalsize\centering\scshape}}%
+{0.7ex plus 1ex minus 0ex}{\normalfont\large\centering\bfseries}} %LessUgly
 \def\subsection{\@startsection{subsection}{2}{\z@}{1.5ex plus 1.5ex minus 0.5ex}%
-{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\itshape}}%
+{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\bfseries}} %LessUgly
 \else % for journals
 \def\section{\@startsection{section}{1}{\z@}{3.0ex plus 1.5ex minus 1.5ex}% V1.6 3.0ex from 3.5ex
 {0.7ex plus 1ex minus 0ex}{\normalfont\normalsize\centering\scshape}}%
@@ -3907,7 +3919,7 @@ between column types.}%
 % for both journals and conferences
 % decided to put in a little rubber above the section, might help somebody
 \def\subsubsection{\@startsection{subsubsection}{3}{\parindent}{0ex plus 0.1ex minus 0.1ex}%
-{0ex}{\normalfont\normalsize\itshape}}%
+{0.5ex plus .2ex minus 0ex}{\normalfont\normalsize\itshape\bfseries}} %LessUgly
 \def\paragraph{\@startsection{paragraph}{4}{2\parindent}{0ex plus 0.1ex minus 0.1ex}%
 {0ex}{\normalfont\normalsize\itshape}}%
 
